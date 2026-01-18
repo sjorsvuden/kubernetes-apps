@@ -22,6 +22,10 @@ spec:
           image: nginx:1.25
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: homepage
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
           readinessProbe:
             httpGet:
               path: /
@@ -34,4 +38,8 @@ spec:
               port: 80
             initialDelaySeconds: 15
             periodSeconds: 10
+      volumes:
+        - name: homepage
+          configMap:
+            name: homepage
 
