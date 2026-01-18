@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 0      # ensures no pod goes down before a new one is ready
-      maxSurge: 1             # allows one extra pod during update
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app: nginx
